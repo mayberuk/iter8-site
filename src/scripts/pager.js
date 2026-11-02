@@ -4,7 +4,7 @@ import { hideTip } from "./tip.js"
 // One wheel or trackpad gesture moves exactly one section. With CSS mandatory snapping alone, Chrome
 // snapped a wheel notch or a short trackpad swipe back to the section it started from.
 const PAGED = matchMedia("(min-width:961px) and (min-height:700px) and (prefers-reduced-motion:no-preference)")
-let paging = false, pages = [], locked = false, moving = false, lastWheel = 0, wheelSum = 0, settleTimer = 0
+let paging = false, pages = [], locked = false, moving = false, lastWheel = 0, wheelSum = 0, settleTimer = 0, innerWheel = 0
 export function pagerSync() {
   const secs = $$("#home > section")
   paging = PAGED.matches && secs.every((sec) => sec.offsetHeight <= innerHeight + 1)
@@ -33,19 +33,20 @@ function goPage(i) {
 addEventListener("scrollend", () => { if (moving) { moving = false; clearTimeout(settleTimer); release() } })
 function scrollsInside(e) {
   for (const el of e.composedPath()) {
-    if (!(el instanceof Element) || el === document.body) return false
-    if (el.scrollHeight > el.clientHeight + 1 && /auto|scroll/.test(getComputedStyle(el).overflowY)) {
-      if (e.deltaY > 0 ? el.scrollTop + el.clientHeight < el.scrollHeight - 1 : el.scrollTop > 0) return true
-    }
+    if (el === document.body || el === document.documentElement) return false
+    if (el instanceof Element && el.scrollHeight > el.clientHeight + 1 && /auto|scroll/.test(getComputedStyle(el).overflowY)
+      && (e.deltaY > 0 ? el.scrollTop + el.clientHeight < el.scrollHeight - 1 : el.scrollTop > 0)) return true
   }
   return false
 }
+// A wheel event pages wherever the pointer is, over another tool's overlay too, unless something under it
+// can still scroll that way. A gesture that began scrolling inside stays there to its end.
 addEventListener("wheel", (e) => {
-  if (!paging || e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return
-  const t = e.composedPath()[0]
-  if (!(t instanceof Element) || !(t === document.documentElement || t === document.body || t.closest("[data-site]")) || scrollsInside(e)) return
-  e.preventDefault()
+  if (!paging || e.ctrlKey || !e.cancelable) return
   const now = performance.now(), gap = now - lastWheel
+  if (gap > 200 && Math.abs(e.deltaX) > Math.abs(e.deltaY)) return
+  if (scrollsInside(e) || now - innerWheel < 200) { innerWheel = now; return }
+  e.preventDefault()
   lastWheel = now
   if (locked) return
   if (gap > 200) wheelSum = 0

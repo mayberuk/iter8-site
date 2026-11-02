@@ -262,7 +262,7 @@ a.ag.soon:hover{color:var(--ink-2);border-bottom-color:var(--mute)}
 .cmd{min-width:0;flex:1 1 100%}
 .cmd .cl{display:block;margin-bottom:6px;font-size:13px;font-weight:500;color:var(--mute)}
 .cbox{display:flex;align-items:center;gap:6px;min-width:0;height:46px;padding:0 6px 0 14px;background:var(--field);border:1px solid var(--line-2);border-radius:10px;box-shadow:0 3px 0 var(--edge)}
-.cbox code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-size:13.5px;color:var(--ink);scrollbar-width:none}
+.cbox code{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;white-space:nowrap;font-size:13.5px;color:var(--ink);scrollbar-width:none}
 .cbox code::-webkit-scrollbar{display:none}
 .cbox code b{font-weight:500;color:var(--cobalt-t)}
 .cta .ghost{height:46px;font-size:14px;padding:0 14px;margin-bottom:3px}
