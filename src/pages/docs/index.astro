@@ -1,0 +1,55 @@
+---
+import { getEntry, render } from "astro:content"
+import Base from "../../layouts/Base.astro"
+import { type Intent, type Stage, icon, ig, sg } from "../../glyphs"
+import { BASE } from "../../site"
+
+const entry = await getEntry("docs", "first-round")
+if (!entry?.rendered) throw new Error("src/content/docs/first-round.md is missing or did not render")
+const { headings } = await render(entry)
+const { title, crumb, intro, toc, prev, next } = entry.data
+
+const NAV: [string, [label: string, href: string | null][]][] = [
+  ["Start", [["Install", `${BASE}#install`], [title, ""], ["Review over SSH", `${BASE}#ssh`]]],
+  ["Using iter8", [["Picking and notes", "#2-pick-and-write"], ["Intents", "#3-say-what-kind-of-note-it-is"], ["Rounds and stages", "#4-send-the-round"], ["Keys", `${BASE}#keys`]]],
+  ["For your agent", [["The rounds skill", null], ["iter8 show and done", "#5-what-your-agent-does-with-it"]]],
+  ["Reference", [["CLI", null]]],
+]
+const ids = new Set(headings.map((h) => h.slug))
+const anchors = [...toc.map((t) => t.id), ...NAV.flatMap(([, links]) => links.flatMap(([, href]) => (href?.startsWith("#") ? [href.slice(1)] : [])))]
+for (const id of anchors) if (!ids.has(id)) throw new Error(`first-round.md has no heading #${id}`)
+
+let clip = 0
+const html = entry.rendered.html
+  .replace(/<i data-icon="(\w+)"><\/i>/g, (_, name: string) => icon(name, 20))
+  .replace(/<i data-glyph="(\w+)"><\/i>/g, (_, intent: Intent) => ig(intent, 18))
+  .replace(/<i data-status="(\w+)" style="([^"]*)"><\/i>/g, (_, state: Stage, style: string) => sg(state, `sgd${++clip}`).replace("<svg ", `<svg style="${style}" `))
+---
+<Base title={`${title} · iter8 docs`} description={intro}>
+  <main id="docsView" data-site>
+    <div class="wrap docs">
+      <nav class="dnav" aria-label="Docs">
+        {NAV.map(([head, links]) => (
+          <>
+            <p class="nh">{head}</p>
+            {links.map(([label, href]) =>
+              href === null ? <span class="na" title="Not written yet">{label}</span>
+              : href === "" ? <a href={`${BASE}docs/`} aria-current="page">{label}</a>
+              : <a href={href}>{label}</a>)}
+          </>
+        ))}
+      </nav>
+      <article class="prose" data-comp="DocsPage" data-src="src/content/docs/first-round.md:1">
+        <p class="crumb">{crumb}</p>
+        <h1>{title}</h1>
+        <p class="intro">{intro}</p>
+        <Fragment set:html={html} />
+        <div class="pager"><a href={`${BASE}${prev.href}`}><small>Previous</small><b>{prev.label}</b></a><a class="nx" href={`${BASE}${next.href}`}><small>Next</small><b>{next.label}</b></a></div>
+      </article>
+      <nav class="toc" aria-label="On this page">
+        <p class="nh">On this page</p>
+        {toc.map((t) => <a href={`#${t.id}`}>{t.label}</a>)}
+      </nav>
+    </div>
+  </main>
+</Base>
