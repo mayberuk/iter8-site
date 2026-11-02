@@ -1,0 +1,34 @@
+---
+import { motif } from "../glyphs"
+import { NOTES } from "../site"
+import Glyph from "./Glyph.astro"
+---
+  <section id="data" class="band wash i-change data reveal" style={`--motif:${motif("change")}`} data-comp="NotesAreData" data-src="src/components/NotesAreData.astro:1">
+    <div class="wrap two">
+      <div>
+        <h2>Notes are data, not a paragraph you paste</h2>
+        <p class="lede">Every note carries what your agent needs to find the code: the element, its selector and text, a lead to the source line, and a screenshot when you want one. What you wrote and what iter8 captured stay apart, and anything taken from the page is marked untrusted, so the agent reads it as data, never as instructions.</p>
+        <div class="legend" id="legend" aria-label="How sure a source lead is">
+          <div data-conf="exact"><b>exact</b><span>The framework told iter8 the file and line.</span></div>
+          <div data-conf="approximate"><b>approximate</b><span>The right file, a line or two out.</span></div>
+          <div class="lo" data-conf="file only"><b>file only</b><span>The component’s file, no line.</span></div>
+          <div class="lo" data-conf="none"><b>none</b><span>No lead. The selector and text still travel.</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="hand" id="hand" role="tablist" aria-label="The four notes from round R3">
+          <button type="button" class="card i-change" role="tab" aria-selected="true" aria-controls="rec" data-n="0"><span class="fr"><span class="th th-h1"><span class="tg">Leave notes on your running page</span></span><span class="fn">N1</span><span class="edge"></span></span><span class="eb"><Glyph intent="change" size={16} />Change</span><span class="tx">{NOTES[1]}</span></button>
+          <button type="button" class="card i-question" role="tab" aria-selected="false" aria-controls="rec" data-n="1" tabindex="-1"><span class="fr"><span class="th th-sub"><i></i><span class="tg"><i></i><i style="width:84%"></i><i style="width:62%"></i></span></span><span class="fn">N2</span><span class="edge"></span></span><span class="eb"><Glyph intent="question" size={16} />Question</span><span class="tx">{NOTES[2]}</span></button>
+          <button type="button" class="card i-fix" role="tab" aria-selected="false" aria-controls="rec" data-n="2" tabindex="-1"><span class="fr"><span class="th th-chips"><i></i><i></i><i></i><i class="tg"></i><i></i></span><span class="fn">N3</span><span class="edge"></span></span><span class="eb"><Glyph intent="fix" size={16} />Fix</span><span class="tx">{NOTES[3]}</span></button>
+          <button type="button" class="card i-keep" role="tab" aria-selected="false" aria-controls="rec" data-n="3" tabindex="-1"><span class="fr"><span class="th th-logo"><span class="tg">iter<em>8</em></span></span><span class="fn">N4</span><span class="edge"></span></span><span class="eb"><Glyph intent="keep" size={16} />Keep</span><span class="tx">{NOTES[4]}</span></button>
+        </div>
+        <div class="seg seg2" role="group" aria-label="View"><button type="button" aria-pressed="true" data-view="rec">As stored</button><button type="button" aria-pressed="false" data-view="reads">What the agent reads <code>iter8 show R3</code></button></div>
+        <article class="rec" id="rec" role="tabpanel" aria-label="The selected note, taken apart"></article>
+        <div class="reads" id="reads" hidden><pre class="tblock" id="showEx" aria-label="Part of the output of iter8 show"></pre></div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  import "../scripts/data.js"
+</script>

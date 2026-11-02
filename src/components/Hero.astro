@@ -1,0 +1,31 @@
+---
+import { INSTALL, INSTALL_ARGS, INSTALL_CMD } from "../site"
+import Icon from "./Icon.astro"
+---
+  <section id="top" class="hero" data-comp="Hero" data-src="src/components/Hero.astro:1" data-dot="Top">
+    <div class="wrap grid">
+      <h1 id="h1" data-src="src/components/Hero.astro:14">Point at it. Say what’s wrong. Send it to your agent.</h1>
+      <div class="left">
+        <p id="sub" data-src="src/components/Hero.astro:19" data-conf="approximate">iter8 puts a review layer over the page you’re building. Point at any element, say what’s wrong, and the whole round of notes lands in the coding-agent session that owns the page, each note with a lead to its source line.</p>
+        <div class="cta">
+          <div class="cmd" id="hcmd">
+            <span class="cl">In Claude Code · at launch</span>
+            <div class="cbox" id="hbox"><code><b>{INSTALL_CMD}</b> {INSTALL_ARGS}</code><button type="button" class="iconbtn" data-copy={INSTALL} aria-label="Copy the install command"><Icon name="copy" size={15} /></button></div>
+          </div>
+          <a class="btn ghost" href="#demo">Watch a round <Icon name="right" size={14} /></a>
+        </div>
+      </div>
+      <dl class="spec" data-comp="Spec" data-src="src/components/Spec.astro:1">
+        <div class="sh"><Icon name="pick" size={13} /><b>Spec</b><span>what iter8 works with</span></div>
+        <div class="row"><dt>Frameworks</dt><dd><ul class="chips" aria-label="Frameworks"><li class="fw" style="--brand:#61dafb"><svg class="fwi" aria-hidden="true"><use href="#fw-react"/></svg>React</li><li class="fw" style="--brand:#ff3e00"><svg class="fwi" aria-hidden="true"><use href="#fw-svelte"/></svg>Svelte</li><li class="fw" style="--brand:var(--ink-2)"><svg class="fwi" aria-hidden="true"><use href="#fw-plain"/></svg>Vue</li><li class="fw" id="hastro" style="--brand:#bc52ee"><svg class="fwi" aria-hidden="true"><use href="#fw-astro"/></svg>Astro</li><li class="fw" style="--brand:var(--ink)"><svg class="fwi" aria-hidden="true"><use href="#fw-next"/></svg>Next.js</li><li class="fw" style="--brand:#e34f26"><svg class="fwi" aria-hidden="true"><use href="#fw-html"/></svg>plain HTML</li></ul></dd></div>
+        <div class="row"><dt>Coding agents</dt><dd><span class="ag on" id="hagent"><svg class="agi" aria-hidden="true"><use href="#agent-mark"/></svg>Claude Code</span><a class="ag soon" href="#agents">More agents planned</a></dd></div>
+        <div class="row"><dt>Runs on</dt><dd>macOS on Apple silicon, Linux</dd></div>
+        <div class="row"><dt>Dev server</dt><dd>This machine, or a remote machine over SSH</dd></div>
+        <div class="row"><dt>Cost</dt><dd>Free and open source</dd></div>
+      </dl>
+    </div>
+  </section>
+
+<script>
+  import "../scripts/hero.js"
+</script>

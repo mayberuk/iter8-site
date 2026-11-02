@@ -1,0 +1,12 @@
+---
+import { BASE, GITHUB } from "../site"
+import Glyph from "./Glyph.astro"
+---
+<footer class="foot" data-site data-comp="SiteFooter" data-src="src/components/SiteFooter.astro:1">
+  <div class="wrap">
+    <a class="brand" href={`${BASE}#top`} aria-label="iter8 home">iter<span class="p8" aria-hidden="true"><i class="i-fix"></i><i class="i-change"></i><i class="i-keep"></i><i class="i-question"></i><b>8</b></span></a>
+    <span class="sig" id="sig" aria-hidden="true"><span class="i-fix"><Glyph intent="fix" size={20} /></span><span class="i-change"><Glyph intent="change" size={20} /></span><span class="i-question"><Glyph intent="question" size={20} /></span><span class="i-keep"><Glyph intent="keep" size={20} /></span></span>
+    <nav aria-label="Footer"><a href={`${BASE}docs/`}>Docs</a><a href={GITHUB}>GitHub</a><a href={`${BASE}#install`}>Install</a><a href={`${BASE}#faq`}>FAQ</a></nav>
+    <p class="note">iter8 is an independent open-source project. It is not made by Anthropic.</p>
+  </div>
+</footer>

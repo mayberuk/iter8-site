@@ -1,0 +1,33 @@
+---
+import Icon from "./Icon.astro"
+---
+<div class="ovl" id="ovl" data-site>
+  <div class="ring" id="ring"><i></i><i></i><i></i><i></i><span class="wtag"></span><span class="htag"></span></div>
+  <div class="pins" id="pins"></div>
+  <div class="panel chip" id="chip" aria-hidden="true"></div>
+  <div class="panel composer" id="cmp" role="dialog" aria-label="New note">
+    <div class="cmp-h"><Icon name="pick" size={14} /><span class="comp" id="cmpComp"></span><span class="nm" id="cmpNm"></span><span class="dim" id="cmpDim"></span></div>
+    <div class="cmp-src" id="cmpSrc"><Icon name="file" size={12} /><span class="file" id="cmpFile"></span><span class="conf" id="cmpConf"></span></div>
+    <div class="intents" role="radiogroup" aria-label="Intent" id="intents"></div>
+    <button type="button" class="reset" id="reset">Reset to auto</button>
+    <div class="cmp-body"><textarea id="cmpText" aria-label="Note" aria-describedby="cmpErr"></textarea><div id="cmpErr" class="err">Add a line so the agent knows what to do.</div></div>
+    <div class="attach"><button type="button" class="switch" role="switch" id="attachSw" aria-checked="false" aria-label="Attach screenshot of this"></button><label for="attachSw">Attach screenshot of this</label><span class="tw" id="attachTw"></span></div>
+    <div class="cmp-f"><span class="hint"><kbd>Esc</kbd> cancel</span><span class="sp"></span><button type="button" class="btn primary" id="saveBtn" data-demo-add aria-label="Save note">Save note <kbd data-mod>⌘</kbd><kbd>↵</kbd></button></div>
+  </div>
+  <div class="panel pcard" id="pcard"></div>
+  <div class="hpins" id="hpins"></div>
+  <div class="ring hring" id="hring"><i></i><i></i><i></i><i></i><span class="wtag"></span><span class="htag"></span></div>
+  <div class="cur" id="hcur"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M4.5 4v17.2l4.6-4.3 3 6.6 3-1.4-3-6.4h6.3z" fill="var(--edge-2)"/><path d="M3 2.5v17.2l4.6-4.3 3 6.6 3-1.4-3-6.4h6.3z" fill="#1f1f1f" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg><i class="tap"></i></div>
+  <div class="cur" id="cur"><svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true"><path d="M4.5 4v17.2l4.6-4.3 3 6.6 3-1.4-3-6.4h6.3z" fill="var(--edge-2)"/><path d="M3 2.5v17.2l4.6-4.3 3 6.6 3-1.4-3-6.4h6.3z" fill="#1f1f1f" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg><i class="tap"></i></div>
+</div>
+
+<div class="panel morepop" id="morePop" data-site role="menu" aria-label="More options">
+  <p class="mh">Theme</p>
+  <div class="tabs" role="radiogroup" aria-label="Theme">
+    <button type="button" class="tab" role="radio" data-theme-set="auto" aria-checked="false">Auto</button>
+    <button type="button" class="tab" role="radio" data-theme-set="light" aria-checked="true">Light</button>
+    <button type="button" class="tab" role="radio" data-theme-set="dark" aria-checked="false">Dark</button>
+  </div>
+  <a href="#demo" id="moreReplay"><Icon name="history" size={15} />Replay the demo</a>
+</div>
+

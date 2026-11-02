@@ -1,0 +1,74 @@
+---
+import Icon from "./Icon.astro"
+import Ring from "./Ring.astro"
+---
+  <section id="demo" class="band demo" data-comp="Demo" data-src="src/components/Demo.astro:1" data-dot="Watch a round">
+    <div class="wrap">
+      <div class="bench">
+        <div class="bl">
+          <div class="dtext">
+            <h2>Watch one round</h2>
+            <p class="lede">Four notes go from a running page to the coding agent that owns it, and come back as a fixed page. Step through it, or take over and leave your own.</p>
+          </div>
+          <figure class="win" id="win" aria-label="Your app in a browser, with iter8 on it">
+            <div class="win-bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="url">iter8-site.localhost</span></div>
+            <div class="pgv" id="pgv">
+              <div class="veil" id="veil"><i></i><i></i><i></i><i></i></div>
+              <header class="mph" data-comp="SiteHeader" data-src="src/components/SiteHeader.astro:3"><span class="mbrand" id="mbrand" data-src="none">iter<span class="p8"><b>8</b></span></span><span class="mnav" aria-hidden="true"><i></i><i></i><i></i></span></header>
+              <section class="mhero" data-comp="Hero" data-src="src/components/Hero.astro:1">
+                <h3 id="mh1" data-src="src/components/Hero.astro:14"><span class="v v1">Leave notes on your running page for your coding agent to pick up.</span><span class="v v2" aria-hidden="true">Point at it. Say what’s wrong. Send it to your agent.</span></h3>
+                <p id="msub" data-src="src/components/Hero.astro:19" data-conf="approximate">iter8 puts a review layer over the page you’re building. Point at any element, say what’s wrong, and send the round.</p>
+                <div class="mworks" data-comp="Works" data-src="src/components/Works.astro:1"><ul aria-label="Frameworks"><li class="fw" style="--brand:#61dafb"><svg class="fwi" aria-hidden="true"><use href="#fw-react"/></svg>React</li><li class="fw" style="--brand:#ff3e00"><svg class="fwi" aria-hidden="true"><use href="#fw-svelte"/></svg>Svelte</li><li class="fw" style="--brand:var(--ink-2)"><svg class="fwi" aria-hidden="true"><use href="#fw-plain"/></svg>Vue</li><li class="fw tilt" id="mastro" data-pin="corner" style="--brand:#bc52ee"><svg class="fwi" aria-hidden="true"><use href="#fw-astro"/></svg>Astro</li><li class="fw" style="--brand:var(--ink)"><svg class="fwi" aria-hidden="true"><use href="#fw-next"/></svg>Next.js</li></ul></div>
+              </section>
+            </div>
+            <div class="dock s-live" id="dock" role="toolbar" aria-label="iter8 annotation tools">
+              <div class="idn" id="idn">
+                <Ring state="live" av={22} id="dockRing" />
+                <span class="proj">iter8-site</span>
+                <span class="where">iter8-site.localhost</span>
+                <span class="stword" id="stword" hidden></span>
+                <span class="sheen" aria-hidden="true"><span class="sheen-copy"><i class="skip" style="width:30px"></i><span class="hn">iter8-site</span><span class="hw">iter8-site.localhost</span><span class="hs" id="sheenWord"></span></span></span>
+              </div>
+              <span class="vr v1"></span>
+              <div class="seg tools">
+                <button type="button" data-tool="pick" aria-pressed="false" aria-label="Pick element" data-tip="Pick element|C"><Icon name="pick" size={16} /><span class="lab">Pick</span></button>
+                <button type="button" data-tool="point" aria-pressed="false" aria-label="Point" data-tip="Point at an exact spot|D"><Icon name="point" size={16} /><span class="lab">Point</span></button>
+                <button type="button" data-tool="area" aria-pressed="false" aria-label="Area" data-tip="Drag out an area|A"><Icon name="area" size={16} /><span class="lab">Area</span></button>
+              </div>
+              <span class="vr"></span>
+              <button type="button" class="counter" id="counter" aria-label="Round sheet" data-tip="Round R3 · open the round sheet|R"><span class="stack" id="stack" aria-hidden="true"></span><span class="n zero" id="countN"><span class="dg">0</span> notes</span><Icon name="right" size={14} /></button>
+              <button type="button" class="send" id="sendBtn" data-demo-send disabled><Icon name="send" size={16} /><span id="sendLab">Send</span></button>
+              <button type="button" class="iconbtn more" id="moreBtn" aria-label="More options" aria-expanded="false"><Icon name="more" size={18} /></button>
+            </div>
+          </figure>
+        </div>
+        <div class="br">
+          <div class="coach" role="group" aria-label="Demo controls">
+            <div class="stp"><span class="dashes" id="dashes"></span><span class="of" id="stpOf"></span></div>
+            <p class="now" data-demo-status aria-live="polite">A round of four notes, from this page to its agent.</p>
+            <div class="cf">
+              <button type="button" class="cbtn" data-demo-replay><Icon name="history" size={14} />Replay</button>
+              <button type="button" class="cbtn" data-demo-step><Icon name="right" size={14} />Step</button>
+              <button type="button" class="cbtn pri" data-demo-takeover aria-pressed="false"><Icon name="pick" size={14} />Take over</button>
+            </div>
+          </div>
+          <div class="termwrap">
+            <figure class="term" data-demo-term aria-label="A coding agent session in a terminal, with the iter8 pane">
+              <div class="term-h"><Ring state="live" av={14} id="termRing" /><span class="tt">you@laptop: ~/dev/iter8-site</span><span class="tc">agent</span><button type="button" class="tt-tog" aria-expanded="false" aria-controls="chat">Show</button></div>
+                <div class="tick" aria-live="off"><b>●</b> <span id="tickTx">waiting for a round</span></div>
+              <div class="term-b">
+                <div class="chat" id="chat" role="log" aria-live="off"></div>
+                <aside class="pane" id="pane" aria-label="iter8 pane"></aside>
+              </div>
+              <div class="term-in"><span>&gt;</span><i class="caret"></i></div>
+              <div class="term-f">? for shortcuts</div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  import "../scripts/demo.js"
+</script>

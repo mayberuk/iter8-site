@@ -1,0 +1,9 @@
+---
+import { type Stage, sg } from "../glyphs"
+type Props = { state: Stage; style?: string; uid?: string }
+const { state, style, uid } = Astro.props
+// The client numbers its own clip paths sgc1, sgc2…, so a build-time one needs a name of its own.
+if (state === "delivered" && !uid) throw new Error("a delivered glyph needs a uid for its clip path")
+const svg = sg(state, `sgs-${uid}`)
+---
+<Fragment set:html={style ? svg.replace("<svg ", `<svg style="${style}" `) : svg} />

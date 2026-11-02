@@ -1,0 +1,26 @@
+---
+import { BASE, GITHUB } from "../site"
+import Icon from "./Icon.astro"
+
+const DOTS = [
+  ["top", "Top", "i-cobalt"],
+  ["demo", "Watch a round", "i-cobalt"],
+  ["how", "Round trip", "i-change"],
+  ["agents", "Coding agents", "i-cobalt"],
+  ["data", "Notes are data", "i-change"],
+  ["owner", "One page, one session", "i-keep"],
+  ["ssh", "Over SSH", "i-question"],
+  ["keys", "Keys", "i-cobalt"],
+  ["install", "Install", "i-keep"],
+  ["faq", "Questions", "i-cobalt"],
+]
+---
+<nav class="dots" data-site aria-label="Sections">{DOTS.map(([id, label, hue]) => <a href={`#${id}`} class={hue} aria-label={label} data-tip={label}><i></i></a>)}</nav>
+<div class="tscrim" data-site></div>
+<div class="tsheet" id="tsheet" data-site role="dialog" aria-label="Sections">{DOTS.map(([id, label, hue]) => <a href={`#${id}`}><i class={`hue ${hue}`}></i>{label}</a>)}<div class="tsx"><a href={`${BASE}docs/`}>Docs</a><a href={GITHUB}>GitHub</a></div></div>
+<nav class="tbar" data-site aria-label="Sections"><button type="button" class="tb-sec" aria-expanded="false" aria-controls="tsheet"><i class="hue i-cobalt"></i><span>Top</span><Icon name="right" size={16} /></button><a class="btn primary" href="#install">Install</a></nav>
+<div class="bp" aria-hidden="true"></div>
+
+<script>
+  import "../scripts/sections.js"
+</script>

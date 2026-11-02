@@ -1,0 +1,25 @@
+---
+import Icon from "./Icon.astro"
+import Status from "./Status.astro"
+---
+  <section id="how" class="band reveal" data-comp="RoundTrip" data-src="src/components/RoundTrip.astro:1">
+    <div class="wrap">
+      <h2>What happens when you press Send</h2>
+      <p class="lede">A round moves through five stages. The dock and the pins show you which one it’s in, so you never wonder whether your agent got your notes.</p>
+      <div class="trip" id="trip">
+        <div class="groove"><i class="i-change"></i><i class="i-cobalt"></i><i class="i-change"></i><i class="i-keep"></i></div>
+        <div class="rider" id="rider" aria-hidden="true"><span class="rs"><i class="i-keep" style="--k:0;--r:-6deg"></i><i class="i-fix" style="--k:1;--r:4deg"></i><i class="i-question" style="--k:2;--r:-3deg"></i><i class="i-change" style="--k:3;--r:2deg"></i></span><span class="tick"><Icon name="check" size={14} /></span></div>
+        <ol class="stops">
+          <li class="stop i-cobalt"><span class="tok"><span class="mp"><i class="i-change"></i><i class="i-question"></i><i class="i-fix"></i><i class="i-keep"></i></span></span><b>Draft</b><p>Your notes sit on the page, numbered, until you send them.</p><span class="saw">4 notes<span class="mx"><i class="i-change"></i><i class="i-question"></i><i class="i-fix"></i><i class="i-keep"></i></span></span></li>
+          <li class="stop i-change"><span class="tok"><Status state="queued" /></span><b>Queued</b><p>Send gathers every note into one round. If the agent is mid-turn, the button reads Queue and the round waits.</p><span class="saw q"><Icon name="send" size={14} />Queue</span></li>
+          <li class="stop i-cobalt"><span class="tok"><Status state="delivered" uid="trip-tok" /></span><b>Announced</b><p>A hook tells the session a round is waiting. It carries a pointer, never your words.</p><span class="saw c"><Status state="delivered" uid="trip-saw" />delivered</span></li>
+          <li class="stop i-change"><span class="tok"><Status state="working" /></span><b>Claimed</b><p>The agent runs <code>iter8 show</code> and reads each note with its source lead, the file and line it came from.</p><span class="saw c"><Status state="working" />busy</span></li>
+          <li class="stop last i-keep"><span class="tok"><Status state="done" /></span><b>Done</b><p>Each note closes with a tick, or with the agent’s answer pinned beside it.</p><span class="saw c"><Status state="done" />done</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+<script>
+  import "../scripts/trip.js"
+</script>

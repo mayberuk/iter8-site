@@ -1,0 +1,14 @@
+---
+import Status from "./Status.astro"
+---
+  <section id="agents" class="band agents-band reveal" data-comp="Agents" data-src="src/components/Agents.astro:1">
+    <div class="wrap">
+      <h2>Works with your coding agent</h2>
+      <p class="lede">iter8 talks to an agent through a small adapter. The agent gets the round of notes; the page, the pins and the dock stay the same.</p>
+      <ul class="agentlist" aria-label="Coding agents">
+          <li class="agcard today"><svg class="agm" aria-hidden="true"><use href="#agent-mark"/></svg><b>Claude Code</b><span class="badge"><Status state="done" />works today</span><p>Version 2.1.296 or newer, through its plugin: hooks, the rounds skill and a mod.</p></li>
+          <li class="agcard planned"><svg class="agm" aria-hidden="true"><use href="#agent-mark"/></svg><b>More agents</b><span class="badge">planned</span><p>The adapter is small, so other coding agents can be added. None of them works yet.</p></li>
+      </ul>
+      <div class="adapter" aria-hidden="true"><span class="ab">your page</span><i></i><span class="ab mid">iter8</span><i></i><span class="ab ad">adapter</span><i></i><span class="ab">your agent</span></div>
+    </div>
+  </section>

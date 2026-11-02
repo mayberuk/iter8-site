@@ -1,0 +1,18 @@
+---
+import Glyph from "./Glyph.astro"
+import Icon from "./Icon.astro"
+import Status from "./Status.astro"
+---
+  <section id="faq" class="band reveal" data-comp="Faq" data-src="src/components/Faq.astro:1">
+    <div class="wrap">
+      <h2>Questions people ask first</h2>
+      <div class="faq">
+        <details><summary><Glyph intent="question" size={22} />Does my page or my code leave my machine?<Icon name="right" size={16} cls="chev" /></summary><div class="ans"><Status state="answered" /><div><p>No. The iter8 service and every page address bind to loopback only, and each call from the overlay carries that page’s own token. Notes travel from your browser to the service on your machine and to your agent’s session. iter8 sends nothing anywhere else.</p></div></div></details>
+        <details><summary><Glyph intent="question" size={22} />Which frameworks does it work with?<Icon name="right" size={16} cls="chev" /></summary><div class="ans"><Status state="answered" /><div><p>Any page that runs in a browser. Source leads come from React, Svelte, Vue, Astro and plain HTML, and Next.js works with both Turbopack and webpack. With no lead, a note still carries the element, its selector and its text.</p></div></div></details>
+        <details><summary><Glyph intent="question" size={22} />What does the agent actually see?<Icon name="right" size={16} cls="chev" /></summary><div class="ans"><Status state="answered" /><div><p>A hook tells the session “Review round R3 from shop · 2 notes — run <code>iter8 show R3</code>”. Nothing you typed goes into the hook. The agent then runs <code>iter8 show</code>, which prints your notes and fences everything captured from the page as untrusted.</p></div></div></details>
+        <details><summary><Glyph intent="question" size={22} />What if the agent is in the middle of something?<Icon name="right" size={16} cls="chev" /></summary><div class="ans"><Status state="answered" /><div><p>The dock says busy and Send becomes Queue. The round waits and is announced at the agent’s next turn, so you can keep leaving notes.</p></div></div></details>
+        <details><summary><Glyph intent="question" size={22} />Will it slow my page down?<Icon name="right" size={16} cls="chev" /></summary><div class="ans"><Status state="answered" /><div><p>The overlay renders into its own shadow root, and iter8’s test gate fails a build if any main-thread task runs past 50&nbsp;ms while you hover, pick and type on a heavy page.</p></div></div></details>
+        <details><summary><Glyph intent="question" size={22} />Which coding agents does it support?<Icon name="right" size={16} cls="chev" /></summary><div class="ans"><Status state="answered" /><div><p>Claude Code today, version 2.1.296 or newer, through its plugin: hooks, a skill and a mod. Those are the only ways iter8 reaches into a session.</p><p>iter8 talks to an agent through a small adapter, so other coding agents can be added. More are planned, and none of them works yet.</p></div></div></details>
+      </div>
+    </div>
+  </section>

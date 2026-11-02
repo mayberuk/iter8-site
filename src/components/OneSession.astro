@@ -1,0 +1,36 @@
+---
+import Icon from "./Icon.astro"
+import Ring from "./Ring.astro"
+import Status from "./Status.astro"
+---
+  <section id="owner" class="band reveal" data-comp="OneSession" data-src="src/components/OneSession.astro:1">
+    <div class="wrap">
+      <h2>One page, one session</h2>
+      <p class="lede">Each page you open gets its own address on <code>localhost</code> and belongs to exactly one coding-agent session. A round goes to that session and nowhere else, and a page whose session has ended says so before you press Send.</p>
+      <div class="seg ptabs" role="group" aria-label="Pairing states"><button type="button" aria-pressed="true" data-k="0">Live</button><button type="button" aria-pressed="false" data-k="1">Busy</button><button type="button" aria-pressed="false" data-k="2">Gone</button></div>
+      <div class="pairs">
+        <div class="pair live i-keep">
+          <div class="pg"><div class="bar"><Icon name="lock" size={11} />shop.localhost</div><div class="body"><span class="sk" style="width:62%"></span><span class="sk" style="width:40%"></span><div class="mdock"><Ring state="live" av={16} /><span class="proj">shop</span><span class="ms"><Icon name="send" size={13} />Send</span></div></div></div>
+          <div class="cordwrap"><div class="cord"><span class="trk i-change"><i></i></span><span class="trk i-question"><i></i></span><span class="trk i-fix"><i></i></span></div></div>
+          <div class="sess"><Ring state="live" av={18} /><div class="who"><b>agent</b><span>~/dev/shop</span></div><span class="stt">waiting</span></div>
+          <p class="why"><b>Live.</b> Notes go straight to the session that opened the page.</p>
+        </div>
+        <div class="pair busy i-change">
+          <div class="pg"><div class="bar"><Icon name="lock" size={11} />admin.localhost</div><div class="body"><span class="sk" style="width:55%"></span><span class="sk" style="width:70%"></span><div class="mdock"><Ring state="busy" av={16} /><span class="proj">admin</span><span class="stword"><Status state="working" />busy</span><span class="ms"><Icon name="send" size={13} />Queue</span></div></div></div>
+          <div class="cordwrap"><div class="cord"><span class="trk i-question"><i></i></span></div><span class="wait"><Status state="queued" /></span></div>
+          <div class="sess"><Ring state="busy" av={18} /><div class="who"><b>agent</b><span>~/dev/admin</span></div><span class="stt">mid-turn</span></div>
+          <p class="why"><b>Busy.</b> Send becomes Queue, and the round is announced at the agent’s next turn.</p>
+        </div>
+        <div class="pair gone i-fix">
+          <div class="pg"><div class="bar"><Icon name="lock" size={11} />docs.localhost</div><div class="body"><span class="sk" style="width:48%"></span><span class="sk" style="width:66%"></span><div class="mdock s-gone"><Ring state="gone" av={16} /><span class="proj">docs</span><span class="stword">session ended</span><span class="ms off"><Icon name="send" size={13} />Send</span></div></div></div>
+          <div class="cordwrap"><div class="cord"><span class="snip"><Icon name="x" size={11} /></span></div></div>
+          <div class="sess"><Ring state="gone" av={18} /><div class="who"><b>agent</b><span>~/dev/docs</span></div><span class="stt">exited</span></div>
+          <p class="why"><b>Gone.</b> The dock strikes the name through and holds Send, so a round never goes out to nobody.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  import "../scripts/session.js"
+</script>

@@ -1,0 +1,56 @@
+---
+import { motif } from "../glyphs"
+import { N2_REPLY, NOTES, SSH_HOST } from "../site"
+import Glyph from "./Glyph.astro"
+import Icon from "./Icon.astro"
+import Ring from "./Ring.astro"
+import Status from "./Status.astro"
+---
+  <section id="ssh" class="band wash i-question reveal" style={`--motif:${motif("question")}`} data-comp="OverSsh" data-src="src/components/OverSsh.astro:1">
+    <div class="wrap">
+      <div class="ssh-top">
+        <div>
+          <h2>Dev server on another machine? Same thing.</h2>
+          <p class="lede">Run your dev server and your coding agent on a remote computer and review from your laptop. iter8 keeps an SSH tunnel up between them, so pages served there open in your laptop’s browser and rounds travel back to the session that owns them.</p>
+          <div class="cmds">
+            <div><span class="cl">Once, on your laptop</span><div class="cbox"><code>iter8 setup {SSH_HOST}</code><button type="button" class="iconbtn" data-copy={`iter8 setup ${SSH_HOST}`} aria-label={`Copy iter8 setup ${SSH_HOST}`}><Icon name="copy" size={15} /></button></div><p>Use any host you can <code>ssh</code> to. It installs the command and keeps the tunnel up from login.</p></div>
+            <div><span class="cl">On the remote machine, as usual</span><div class="cbox"><code>iter8 open http://localhost:5173</code><button type="button" class="iconbtn" data-copy="iter8 open http://localhost:5173" aria-label="Copy iter8 open"><Icon name="copy" size={15} /></button></div><p>The page opens on your laptop, already paired to the session on the remote machine.</p></div>
+          </div>
+        </div>
+        <aside class="acard" aria-label="The agent’s answer to note 2">
+          <span class="apin"><span class="pin answered"><Status state="answered" /></span></span>
+          <div class="who"><span class="av agent" style="--s:18px" role="img" aria-label="Your agent"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#agent-mark"/></svg></span><b>Your agent</b><span class="stc"><Status state="answered" />answered</span></div>
+          <p class="tx" set:html={N2_REPLY} />
+          <p class="q"><Glyph intent="question" size={15} /><span>Note 2 from the demo: “{NOTES[2]}”</span></p>
+        </aside>
+      </div>
+      <div class="tunnel">
+        <figure class="laptop">
+          <div class="scr"><div class="scr-in">
+            <div class="url"><Icon name="lock" size={10} />shop.localhost</div>
+            <div class="pgc"><div class="h">Spring sale ends Sunday</div><span class="sk" style="width:70%"></span><span class="sk" style="width:46%"></span><span class="sk" style="width:58%"></span></div>
+            <div class="mdock"><Ring state="live" av={16} /><span class="proj">shop</span><span class="ms"><Icon name="send" size={13} />Send</span></div>
+            <div class="pp" style="transform:translate(222px,53px)"><span class="pin fix">1</span></div>
+            <div class="pp" style="transform:translate(30px,92px)"><span class="pin change">2</span></div>
+          </div></div>
+          <div class="base"></div>
+          <figcaption><b>Your laptop</b>The browser, with the dock on the page.</figcaption>
+        </figure>
+        <div class="pipe" aria-hidden="true">
+          <span class="lbl l1">pages</span>
+          <div class="rail back"><span class="trk"><i></i></span><span class="trk"><i></i></span><span class="trk"><i></i></span></div>
+          <div class="rail fwd"><span class="trk i-fix"><i></i></span><span class="trk i-question"><i></i></span><span class="trk i-keep"><i></i></span></div>
+          <span class="ssh">ssh</span>
+          <span class="lbl l2">rounds</span>
+        </div>
+        <figure class="dev">
+          <div class="tower">
+            <div class="bay"><i class="led"></i><b>dev server</b><span class="mu">:5173</span></div>
+            <div class="bay"><i class="led"></i><b>agent</b><span class="mu">~/dev/shop</span></div>
+            <div class="bay"><i class="led"></i><b>iter8</b><span class="mu">:3990</span></div>
+          </div>
+          <figcaption><b>Remote computer</b>The dev server, your coding agent and iter8.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>

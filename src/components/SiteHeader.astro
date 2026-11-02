@@ -1,0 +1,15 @@
+---
+import { BASE, GITHUB } from "../site"
+import Icon from "./Icon.astro"
+---
+<header class="wrap site" data-site data-comp="SiteHeader" data-src="src/components/SiteHeader.astro:3">
+  <a class="brand" id="brand" href={`${BASE}#top`} aria-label="iter8 home" data-src="none">iter<span class="p8" aria-hidden="true"><i class="i-fix"></i><i class="i-change"></i><i class="i-keep"></i><i class="i-question"></i><b>8</b></span></a>
+  <nav class="nav" aria-label="Main">
+    <a href={`${BASE}#how`}>How it works</a>
+    <a href={`${BASE}#ssh`}>Over SSH</a>
+    <a class="keep" href={`${BASE}docs/`}>Docs</a>
+    <a href={GITHUB}>GitHub</a>
+    <button type="button" class="themesw" id="themeSw" role="switch" aria-checked="false" aria-label="Dark theme"><span class="kn"><Icon name="sun" size={14} cls="sun" /><Icon name="moon" size={13} cls="moon" /></span></button>
+    <a class="btn primary keep" href={`${BASE}#install`}>Install</a>
+  </nav>
+</header>

@@ -1,0 +1,16 @@
+---
+import { motif } from "../glyphs"
+import { INSTALL, INSTALL_ARGS, INSTALL_CMD, SSH_HOST } from "../site"
+import Icon from "./Icon.astro"
+---
+  <section id="install" class="band wash i-keep reveal" style={`--motif:${motif("keep")}`} data-comp="Install" data-src="src/components/Install.astro:1">
+    <div class="wrap">
+      <h2>Install it in your coding agent</h2>
+      <p class="lede">One plugin brings the hooks, the rounds skill, the pane in your terminal and the <code>iter8</code> binary itself. <span class="preview"><Icon name="info" size={16} /><span><b>Preview:</b> iter8 isn’t public yet. These steps work at launch.</span></span></p>
+      <ol class="steps">
+        <li class="step"><span class="sn">1</span><div><h3>Add the plugin <span>in Claude Code 2.1.296 or newer</span></h3><div class="cbox"><code><b>{INSTALL_CMD}</b> {INSTALL_ARGS}</code><button type="button" class="iconbtn" data-copy={INSTALL} aria-label="Copy the plugin install command"><Icon name="copy" size={15} /></button></div><p>It downloads the iter8 binary for macOS on Apple silicon or Linux x64 and checks it against the SHA-256 the plugin pins.</p></div></li>
+        <li class="step"><span class="sn">2</span><div><h3>Open your page</h3><div class="cbox"><code>iter8 open http://localhost:5173</code><button type="button" class="iconbtn" data-copy="iter8 open http://localhost:5173" aria-label="Copy iter8 open"><Icon name="copy" size={15} /></button></div><p class="or">Or just ask your agent to “open this page for review”. The page opens at its own address, like <code>shop.localhost</code>, with the dock on it.</p></div></li>
+        <li class="step"><span class="sn">3</span><div><h3>Review from your laptop <span>only if the dev server runs elsewhere</span></h3><div class="cbox"><code>iter8 setup {SSH_HOST}</code><button type="button" class="iconbtn" data-copy={`iter8 setup ${SSH_HOST}`} aria-label={`Copy iter8 setup ${SSH_HOST}`}><Icon name="copy" size={15} /></button></div><p>Run it once on your laptop, and pages on the remote machine open in your browser.</p></div></li>
+      </ol>
+    </div>
+  </section>

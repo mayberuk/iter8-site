@@ -1,0 +1,7 @@
+---
+import { ring } from "../glyphs"
+type Props = { state: string; av: number; id?: string }
+const { state, av, id } = Astro.props
+const html = ring(state, av)
+---
+<Fragment set:html={id ? html.replace('<span class="status-ring', `<span id="${id}" class="status-ring`) : html} />

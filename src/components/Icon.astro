@@ -1,0 +1,6 @@
+---
+import { icon } from "../glyphs"
+type Props = { name: string; size?: number; cls?: string }
+const { name, size = 16, cls = "" } = Astro.props
+---
+<Fragment set:html={icon(name, size, cls)} />

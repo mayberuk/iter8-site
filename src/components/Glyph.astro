@@ -1,0 +1,6 @@
+---
+import { type Intent, ig } from "../glyphs"
+type Props = { intent: Intent; size?: number }
+const { intent, size = 20 } = Astro.props
+---
+<Fragment set:html={ig(intent, size)} />

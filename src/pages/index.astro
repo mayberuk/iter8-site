@@ -1,0 +1,36 @@
+---
+import Agents from "../components/Agents.astro"
+import Demo from "../components/Demo.astro"
+import Faq from "../components/Faq.astro"
+import Hero from "../components/Hero.astro"
+import Install from "../components/Install.astro"
+import Keys from "../components/Keys.astro"
+import NotesAreData from "../components/NotesAreData.astro"
+import OneSession from "../components/OneSession.astro"
+import OverSsh from "../components/OverSsh.astro"
+import Overlay from "../components/Overlay.astro"
+import RoundTrip from "../components/RoundTrip.astro"
+import Sections from "../components/Sections.astro"
+import Base from "../layouts/Base.astro"
+---
+<Base
+  title="iter8 · Point at the page. Your coding agent gets the note."
+  description="iter8 puts a review layer over the page you're building. Point at any element, say what's wrong, and the round of notes lands in the coding-agent session that owns the page. Works with Claude Code today."
+>
+  <main id="home" data-site>
+    <Hero />
+    <Demo />
+    <RoundTrip />
+    <Agents />
+    <NotesAreData />
+    <OneSession />
+    <OverSsh />
+    <Keys />
+    <Install />
+    <Faq />
+  </main>
+  <Fragment slot="after">
+    <Overlay />
+    <Sections />
+  </Fragment>
+</Base>

@@ -1,0 +1,36 @@
+---
+import "../styles/fonts.css"
+import "../styles/tokens.css"
+import "../styles/site.css"
+import SiteFooter from "../components/SiteFooter.astro"
+import SiteHeader from "../components/SiteHeader.astro"
+import Symbols from "../components/Symbols.astro"
+import { BASE } from "../site"
+
+type Props = { title: string; description: string }
+const { title, description } = Astro.props
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>{title}</title>
+<meta name="description" content={description}>
+<link rel="preload" href={`${BASE}fonts/reddit-sans/reddit-sans-latin-wght-normal.woff2`} as="font" type="font/woff2" crossorigin>
+<link rel="preload" href={`${BASE}fonts/jetbrains-mono/jetbrains-mono-latin-wght-normal.woff2`} as="font" type="font/woff2" crossorigin>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem("iter8-theme")||"light"}catch{}</script>
+</head>
+<body>
+<Symbols />
+<SiteHeader />
+<slot />
+<SiteFooter />
+<slot name="after" />
+<div class="tip" id="tip" role="tooltip" data-site></div>
+<script>
+  import "../scripts/chrome.js"
+</script>
+</body>
+</html>
