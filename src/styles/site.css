@@ -771,8 +771,6 @@ figure{margin:0}
 .step p{margin-top:8px;color:var(--tx2,var(--ink-2));max-width:38em}
 .step .cbox{margin-top:10px;max-width:640px}
 .step .cbox+.cbox{margin-top:8px}
-.preview{display:inline-flex;align-items:center;gap:7px;margin-left:8px;padding:3px 10px 3px 8px;vertical-align:1px;border-radius:8px;background:var(--paper);border:1px solid var(--cl,var(--line-2));box-shadow:0 2px 0 var(--cl,var(--edge));font-size:14.5px;line-height:22px;color:var(--ink-2)}
-.preview b,.preview svg{flex:none;color:var(--ct,var(--ink))}
 .step .or{margin-top:10px;font-size:15px}
 
 .faq{margin-top:48px;max-width:860px;border-top:1px solid var(--line)}
