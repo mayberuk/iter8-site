@@ -1,6 +1,9 @@
-export const GITHUB = "https://github.com/mayberuk/iter8-site"
+export const GITHUB = "https://github.com/mayberuk/iter8"
+export const MARKETPLACE_CMD = "/plugin marketplace add"
+export const MARKETPLACE_ARGS = "mayberuk/iter8"
+export const MARKETPLACE = `${MARKETPLACE_CMD} ${MARKETPLACE_ARGS}`
 export const INSTALL_CMD = "/plugin install"
-export const INSTALL_ARGS = "iter8"
+export const INSTALL_ARGS = "iter8@iter8"
 export const INSTALL = `${INSTALL_CMD} ${INSTALL_ARGS}`
 export const SSH_HOST = "my-server"
 export const BASE = import.meta.env.BASE_URL
